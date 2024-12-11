@@ -23,9 +23,9 @@
         dest: /tmp/
                 
     - name: Build Docker image
-      community.docker.docker_image:
+      docker_image:
         build:
-          path: /tmp
+          path: /tmp/
         name: my_application
         tag: latest
 
