@@ -4,7 +4,7 @@
   tasks:
     - name: Ensure Docker is installed
       ansible.builtin.package:
-        name: docker
+        name: docker.io
         state: present
 
     - name: Copy Dockerfile to build server
