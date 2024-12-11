@@ -1,16 +1,17 @@
 ---
+
 - name: Install docker on Ubuntu
-  apt:
+  dnf:
     name: docker.io
     state: present
-
+    
 - name: Start and Enable Docker
   service:
     name: docker
     state: started
     enabled: yes
 
-- name: Copy Dockerfile
+- name: Copy Dockerfile to build directory
   copy:
     src: /home/gapisa/Group3_FinalProject/Dockerfile/
     dest: /home/gapisa/Dockerfile
@@ -29,10 +30,10 @@
   copy:
     src: /home/gapisa/Group3_FinalProject/styles.css/
     dest: /home/gapisa/styles.css
-
+    
 - name: Build Docker image
   docker_image:
-    name: my_application
+    name: web_application
     source: build
     build:
       path: /home/gapisa
