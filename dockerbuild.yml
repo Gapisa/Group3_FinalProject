@@ -1,5 +1,5 @@
 - name: Build Docker Images
-  hosts: build_servers
+  hosts: all
   become: yes
   tasks:
     - name: Ensure Docker is installed
@@ -35,4 +35,30 @@
         src: /tmp/my_application.tar
         dest: ./docker_images/my_application.tar
         flat: yes
+        
+- name: Deploy and Run Docker Images
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure Docker is installed
+      ansible.builtin.package:
+        name: docker
+        state: present
+
+    - name: Copy Docker image tar file to server
+      ansible.builtin.copy:
+        src: ./docker_images/my_application.tar
+        dest: /tmp/my_application.tar
+
+    - name: Load Docker image
+      ansible.builtin.command:
+        cmd: docker load -i /tmp/my_application.tar
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: my_application_container
+        image: my_application:latest
+        state: started
+        ports:
+          - "8080:8080"
   
