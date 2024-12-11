@@ -15,8 +15,8 @@
     - name: Copy application files to build server
       ansible.builtin.copy:
         src:
-          - ./index.html
-          - ./style.css
+          - /home/gapisa/Group3_FinalProject/index.html
+          - /home/gapisa/Group3_FinalProject/styles.css
         dest: /tmp/
 
     - name: Build Docker image
