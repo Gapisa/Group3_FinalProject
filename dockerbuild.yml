@@ -11,24 +11,23 @@
     - name: Copy Dockerfile to build server
       copy:
         src: /home/gapisa/Group3_FinalProject/Dockerfile
-        dest: /home/gapisa/Dockerfile
+        dest: /home/gapisa/Group3_FinalProject/Dockerfile
 
     - name: Copy index.html file
       copy:
         src: /home/gapisa/Group3_FinalProject/index.html
-        dest: /home/gapisa/index.html
+        dest: /home/gapisa/Group3_FinalProject/index.html
         
     - name: Copy styles.css file
       copy:
         src: /home/gapisa/Group3_FinalProject/styles.css
-        dest: /home/gapisa/styles.css
+        dest: /home/gapisa/Group3_FinalProject/styles.css
                 
     - name: Build Docker image
       docker_image:
         name: my_application
         build:
-          path: /home/gapisa
-        tag: latest
+          path: /home/gapisa/Group3_FinalProject
 
 #    - name: Save Docker image to tar file
 #      ansible.builtin.command:
