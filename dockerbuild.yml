@@ -6,8 +6,13 @@
       ansible.builtin.package:
         name: docker.io
         state: present
-
-
+        
+    - name: Start and enable docker services
+      service:
+        name: docker
+        state: started
+        enabled: yes
+        
     - name: Copy Dockerfile to build server
       copy:
         src: /home/gapisa/Group3_FinalProject/Dockerfile
@@ -48,12 +53,6 @@
       ansible.builtin.package:
         name: docker.io
         state: present
-        
-    - name: Start and enable docker services
-      service:
-        name: docker
-        state: started
-        enabled: yes
 
 #    - name: Copy Docker image tar file to server
 ##      ansible.builtin.copy:
