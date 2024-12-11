@@ -1,5 +1,5 @@
 - name: Build Docker Images
-  hosts: all
+  hosts: servers
   become: yes
   tasks:
     - name: Ensure Docker is installed
