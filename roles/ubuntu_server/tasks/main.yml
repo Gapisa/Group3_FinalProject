@@ -27,7 +27,7 @@
     
 - name: Copy style file
   copy:
-    src: /home/gapisa/Grou3_FinalProject/styles.css/
+    src: /home/gapisa/Group3_FinalProject/styles.css/
     dest: /home/gapisa/styles.css
 
 - name: Build Docker image
