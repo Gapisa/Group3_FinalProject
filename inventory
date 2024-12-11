@@ -1,2 +1,2 @@
 [centos]
-centosserver ansible_hosts:192.168.56.125
+centosserver ansible_hosts=192.168.56.125
