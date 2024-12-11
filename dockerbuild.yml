@@ -1,0 +1,38 @@
+- name: Build Docker Images
+  hosts: build_servers
+  become: yes
+  tasks:
+    - name: Ensure Docker is installed
+      ansible.builtin.package:
+        name: docker
+        state: present
+
+    - name: Copy Dockerfile to build server
+      ansible.builtin.copy:
+        src: ./Dockerfile
+        dest: /tmp/Dockerfile
+
+    - name: Copy application files to build server
+      ansible.builtin.copy:
+        src:
+          - ./index.html
+          - ./style.css
+        dest: /tmp/
+
+    - name: Build Docker image
+      community.docker.docker_image:
+        build:
+          path: /tmp
+        name: my_application
+        tag: latest
+
+    - name: Save Docker image to tar file
+      ansible.builtin.command:
+        cmd: docker save my_application:latest -o /tmp/my_application.tar
+
+    - name: Fetch Docker image tar file
+      ansible.builtin.fetch:
+        src: /tmp/my_application.tar
+        dest: ./docker_images/my_application.tar
+        flat: yes
+  
