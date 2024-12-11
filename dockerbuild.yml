@@ -25,9 +25,9 @@
                 
     - name: Build Docker image
       docker_image:
+        name: my_application
         build:
           path: /home/gapisa
-        name: my_application
         tag: latest
 
 #    - name: Save Docker image to tar file
