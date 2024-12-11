@@ -28,6 +28,7 @@
         name: my_application
         build:
           path: /home/gapisa/Group3_FinalProject
+        state: present
 
 #    - name: Save Docker image to tar file
 #      ansible.builtin.command:
