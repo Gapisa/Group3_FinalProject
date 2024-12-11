@@ -1,0 +1,50 @@
+- name: Creating the Docker Image for the webapp
+  hosts: servers
+  become: yes
+  tasks:
+
+  - name: Python3 Checking
+    yum:
+      name: python3
+      state: present
+      update_cache: yes
+
+  - name: Python pip3 checking
+    yum:
+      name: python3-pip
+      state: present
+
+  - name: Ensure Docker SDK for Python is installed
+    pip:
+      name: docker
+      state: present
+      executable: pip3
+      
+  - name: Start and enable Docker service
+    hosts: all
+    become: yes
+    
+  - name: Start Docker service
+    service:
+       name: docker
+       state: started
+       enabled: yes
+
+  - name: Copy Docker file into servers
+     copy:
+      src: // PA IDENTIFY NG PATH SOURCE
+      dest: // PA IDENTIFY NG PATH DESTINATION
+      owner: // PALAGAY KUNG SINO USER
+
+ - name: Build Docker image on servers
+   docker_image:
+     source: build
+     build:
+       path: // PA IDENTIFY NG PATH
+       dockerfile: Dockerfile
+       pull: yes
+     name: //PA INSERT NAME
+     tag: latest
+     state: present
+
+  
