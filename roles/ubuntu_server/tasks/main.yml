@@ -12,7 +12,7 @@
 
 - name: Copy Dockerfile
   copy:
-    src: /home/gapisa/Group3_FinalProject
+    src: /home/gapisa/Group3_FinalProject/Dockerfile
     dest: /home/gapisa/Dockerfile
     
 - name: Copy index file
