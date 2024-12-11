@@ -8,8 +8,8 @@
         state: present
 
     - name: Copy Dockerfile to build server
-      ansible.builtin.copy:
-        src: ./Dockerfile
+      copy:
+        src: /home/gapisa/Group3_FinalProject/Dockerfile
         dest: /tmp/Dockerfile
 
     - name: Copy application files to build server
