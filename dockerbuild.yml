@@ -12,13 +12,18 @@
         src: /home/gapisa/Group3_FinalProject/Dockerfile
         dest: /tmp/Dockerfile
 
-    - name: Copy application files to build server
+    - name: Copy index.html file
       copy:
         src:
           - /home/gapisa/Group3_FinalProject/index.html
+        dest: /tmp/
+        
+    - name: Copy styles.css file
+      copy:
+        src:
           - /home/gapisa/Group3_FinalProject/styles.css
         dest: /tmp/
-
+                
     - name: Build Docker image
       community.docker.docker_image:
         build:
