@@ -31,10 +31,10 @@
     src: /home/gapisa/Group3_FinalProject/styles.css/
     dest: /home/gapisa/styles.css
     
-- name: Build Docker image
-  docker_image:
-    name: web_application
-    source: build
-    build:
-      path: /home/gapisa
-    state: present
+#- name: Build Docker image
+#  docker_image:
+#    name: web_application
+#    source: build
+#    build:
+#      path: /home/gapisa
+ #   state: present
