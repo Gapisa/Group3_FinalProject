@@ -13,7 +13,7 @@
         dest: /tmp/Dockerfile
 
     - name: Copy application files to build server
-      ansible.builtin.copy:
+      copy:
         src:
           - /home/gapisa/Group3_FinalProject/index.html
           - /home/gapisa/Group3_FinalProject/styles.css
