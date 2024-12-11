@@ -7,60 +7,67 @@
         name: docker.io
         state: present
 
+
     - name: Copy Dockerfile to build server
       copy:
         src: /home/gapisa/Group3_FinalProject/Dockerfile
-        dest: /tmp/Dockerfile
+        dest: /home/gapisa/Dockerfile
 
     - name: Copy index.html file
       copy:
         src: /home/gapisa/Group3_FinalProject/index.html
-        dest: /tmp/
+        dest: /home/gapisa/index.html
         
     - name: Copy styles.css file
       copy:
         src: /home/gapisa/Group3_FinalProject/styles.css
-        dest: /tmp/
+        dest: /home/gapisa/styles.css
                 
     - name: Build Docker image
       docker_image:
         build:
-          path: /tmp/
+          path: /home/gapisa
         name: my_application
         tag: latest
 
-    - name: Save Docker image to tar file
-      ansible.builtin.command:
-        cmd: docker save my_application:latest -o /tmp/my_application.tar
+#    - name: Save Docker image to tar file
+#      ansible.builtin.command:
+#        cmd: docker save my_application:latest -o /tmp/my_application.tar
 
-    - name: Fetch Docker image tar file
-      ansible.builtin.fetch:
-        src: /tmp/my_application.tar
-        dest: ./docker_images/my_application.tar
-        flat: yes
+ #   - name: Fetch Docker image tar file
+ #     ansible.builtin.fetch:
+ #       src: /tmp/my_application.tar
+ #       dest: ./docker_images/my_application.tar
+ #       flat: yes
         
 - name: Deploy and Run Docker Images
-  hosts: all
+  hosts: servers
   become: yes
   tasks:
     - name: Ensure Docker is installed
       ansible.builtin.package:
-        name: docker
+        name: docker.io
         state: present
+        
+    - name: Start and enable docker services
+      service:
+        name: docker
+        state: started
+        enabled: yes
 
-    - name: Copy Docker image tar file to server
-      ansible.builtin.copy:
-        src: ./docker_images/my_application.tar
-        dest: /tmp/my_application.tar
+#    - name: Copy Docker image tar file to server
+##      ansible.builtin.copy:
+#        src: ./docker_images/my_application.tar
+#        dest: /tmp/my_application.tar
 
-    - name: Load Docker image
-      ansible.builtin.command:
-        cmd: docker load -i /tmp/my_application.tar
+#    - name: Load Docker image
+#      ansible.builtin.command:
+#        cmd: docker load -i /tmp/my_application.tar
 
     - name: Run Docker container
       community.docker.docker_container:
         name: my_application_container
-        image: my_application:latest
+        image: my_application
         state: started
         ports:
           - "8080:8080"
