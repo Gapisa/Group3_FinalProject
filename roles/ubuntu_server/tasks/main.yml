@@ -1,0 +1,39 @@
+---
+- name: Install docker on Ubuntu
+  apt:
+    name: docker.io
+    state: present
+
+- name: Start and Enable Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Copy Dockerfile
+  copy:
+    src: /home/gapisa/Group3_FinalProject
+    dest: /home/gapisa/Dockerfile
+    
+- name: Copy index file
+  copy:
+    src: /home/gapisa/Group3_FinalProject/index.html/
+    dest: /home/gapisa/index.html
+
+- name: Copy app directory
+  copy:
+    src: /home/gapisa/Group3_FinalProject/app
+    dest: /home/gapisa/app
+    
+- name: Copy style file
+  copy:
+    src: /home/gapisa/Grou3_FinalProject/styles.css/
+    dest: /home/gapisa/styles.css
+
+- name: Build Docker image
+  docker_image:
+    name: my_application
+    source: build
+    build:
+      path: /home/gapisa
+    state: present
