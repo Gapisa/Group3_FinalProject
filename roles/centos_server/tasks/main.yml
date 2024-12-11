@@ -33,7 +33,7 @@
     
 - name: Build Docker image
   docker_image:
-    name: web_Application
+    name: web_application
     source: build
     build:
       path: /home/gapisa
