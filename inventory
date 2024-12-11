@@ -1,4 +1,4 @@
 [servers]
-server1= 192.168.56.124
+#server1= 192.168.56.124
 server2= 192.168.56.126
-centosserver= 192.168.56.125
+#centosserver= 192.168.56.125
