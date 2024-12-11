@@ -1,7 +1,7 @@
 ---
 
 - name: Install docker on Ubuntu
-  dnf:
+  apt:
     name: docker.io
     state: present
     
