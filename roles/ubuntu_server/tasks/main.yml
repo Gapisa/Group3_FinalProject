@@ -13,7 +13,7 @@
 
 - name: Copy Dockerfile to build directory
   copy:
-    src: /home/gapisa/Group3_FinalProject/Dockerfile
+    src: /home/gapisa/Group3_FinalProject/Dockerfile/
     dest: /home/gapisa/Dockerfile
     
 - name: Copy index file
