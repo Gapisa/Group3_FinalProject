@@ -3,7 +3,7 @@ FROM node:14
 WORKDIR /app
 
 COPY index.html .
-COPY styles.css .
+COPY style.css .
 
 RUN npm install -g http-server
 
