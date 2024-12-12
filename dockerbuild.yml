@@ -6,11 +6,11 @@
   roles:
     - ubuntu_server
 
-#- name: Build Docker Images on CentOS server
-#  hosts: centos
-#  become: yes
-#  roles:
-#    - centos_server
+- name: Build Docker Images on CentOS server
+  hosts: centos
+  become: yes
+  roles:
+    - centos_server
 
 - name: Run docker container
   hosts: all
@@ -19,8 +19,8 @@
 
     - name: Run Docker Container
       docker_container:
-        name: web_app
-        image: web_application
+        name: Group3_webapp
+        image: web_app
         state: started
         ports:
           - "8080:8080"
