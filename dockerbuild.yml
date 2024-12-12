@@ -6,11 +6,11 @@
   roles:
     - ubuntu_server
 
-- name: Build Docker Images on CentOS server
-  hosts: centos
-  become: yes
-  roles:
-    - centos_server
+#- name: Build Docker Images on CentOS server
+#  hosts: centos
+#  become: yes
+#  roles:
+#    - centos_server
 
 - name: Run docker container
   hosts: all
