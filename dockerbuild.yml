@@ -12,15 +12,15 @@
 #  roles:
 #    - centos_server
 
-- name: Run docker container
-  hosts: all
-  become: yes
-  tasks:
+#- name: Run docker container
+#  hosts: all
+#  become: yes
+#  tasks:
 
-    - name: Run Docker Container
-      docker_container:
-        name: Group3_webapp
-        image: webapp
-        state: started
-        ports:
-          - "8080:8080"
+ #   - name: Run Docker Container
+ #     docker_container:
+ #       name: Group3_webapp
+ #       image: webapp
+ #       state: started
+ #       ports:
+ #         - "8080:8080"
