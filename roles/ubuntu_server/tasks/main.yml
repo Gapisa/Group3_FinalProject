@@ -27,7 +27,7 @@
 
 - name: Build Docker image
   docker_image:
-    name: web_application
+    name: webapp
     source: build
     build:
       path: /home/gapisa/Group3_FinalProject
