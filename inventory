@@ -1,5 +1,5 @@
 [ubuntu]
-#server1 ansible_host=192.168.56.127
+server1 ansible_host=192.168.56.127
 #server2 ansible_host=192.168.56.128
 [centos]
-centosserver ansible_hosts=192.168.56.125
+#centosserver ansible_hosts=192.168.56.125
