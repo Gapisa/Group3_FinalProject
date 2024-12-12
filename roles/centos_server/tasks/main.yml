@@ -14,27 +14,22 @@
 - name: Copy Dockerfile to build directory
   copy:
     src: /home/gapisa/Group3_FinalProject/Dockerfile/
-    dest: /home/gapisa/Dockerfile
+    dest: /home/gapisa/Group3_FinalProject/Dockerfile
     
 - name: Copy index file
   copy:
     src: /home/gapisa/Group3_FinalProject/index.html/
-    dest: /home/gapisa/index.html
-
-- name: Copy app directory
-  copy:
-    src: /home/gapisa/Group3_FinalProject/app
-    dest: /home/gapisa/app
+    dest: /home/gapisa/Group3_FinalProject/index.html
     
 - name: Copy style file
   copy:
     src: /home/gapisa/Group3_FinalProject/styles.css/
-    dest: /home/gapisa/styles.css
+    dest: /home/gapisa/Group3_FinalProject/styles.css
     
 - name: Build Docker image
   docker_image:
-    name: web_application
+    name: web_app
     source: build
     build:
-      path: /home/gapisa
+      path: /home/gapisa/Group3_FinalProject
     state: present
