@@ -20,7 +20,7 @@
     - name: Run Docker Container
       docker_container:
         name: Group3_webapp
-        image: web_app
+        image: web_application
         state: started
         ports:
           - "8080:8080"
